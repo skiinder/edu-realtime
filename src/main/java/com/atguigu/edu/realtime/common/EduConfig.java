@@ -13,6 +13,9 @@ public class EduConfig {
     // Phoenix库名
     public static final String HBASE_SCHEMA = "EDU_REALTIME";
 
+    public static final String MYSQL_HOST = "mysql.bigdata";
+    public static final String REDIS_HOST = "redis-master.bigdata";
+
     // Phoenix驱动
     public static final String PHOENIX_DRIVER = "org.apache.phoenix.jdbc.PhoenixDriver";
 
@@ -25,6 +28,6 @@ public class EduConfig {
 
     // ClickHouse 连接 URL
 //    public static final String CLICKHOUSE_URL = "jdbc:clickhouse://hadoop102:8123/edu_realtime";
-    public static final String CLICKHOUSE_URL = "jdbc:clickhouse://chi-clickhouse-simple-0-0:8123/edu_realtime";
+    public static final String CLICKHOUSE_URL = "jdbc:clickhouse://chi-clickhouse-simple-0-0.bigdata:8123/edu_realtime";
 
 }

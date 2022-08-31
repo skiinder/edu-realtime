@@ -19,7 +19,7 @@ import java.util.Properties;
  * Created by 铁盾 on 2022/6/13
  */
 public class KafkaUtil {
-    static final String BOOTSTRAP_SERVERS = "hadoop104:9092,hadoop105:9092,hadoop106:9092";
+    static final String BOOTSTRAP_SERVERS = "kafka.bigdata";
     static final String DEFAULT_TOPIC = "default_topic";
 
     static Properties consumerProps = new Properties();

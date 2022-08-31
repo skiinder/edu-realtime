@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.atguigu.edu.realtime.app.func.MyBroadcastFunction;
 import com.atguigu.edu.realtime.app.func.MyPhoenixSink;
 import com.atguigu.edu.realtime.bean.DimTableProcess;
+import com.atguigu.edu.realtime.common.EduConfig;
 import com.atguigu.edu.realtime.util.EnvUtil;
 import com.atguigu.edu.realtime.util.KafkaUtil;
 import com.ververica.cdc.connectors.mysql.source.MySqlSource;
@@ -68,7 +69,7 @@ public class DimSinkApp {
         // TODO 4. 用 FlinkCDC 读取配置表数据，封装为流
         // 4.1 读取配置表信息
         MySqlSource<String> mySqlSource = MySqlSource.<String>builder()
-                .hostname("hadoop102")
+                .hostname(EduConfig.MYSQL_HOST)
                 .port(3306)
                 .databaseList("edu_config") // set captured database
                 .tableList("edu_config.table_process") // set captured table

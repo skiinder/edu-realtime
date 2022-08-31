@@ -1,5 +1,6 @@
 package com.atguigu.edu.realtime.util;
 
+import com.atguigu.edu.realtime.common.EduConfig;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -19,7 +20,7 @@ public class JedisUtil {
         poolConfig.setBlockWhenExhausted(true);
         poolConfig.setMaxWaitMillis(2000);
         poolConfig.setTestOnBorrow(true);
-        jedisPool = new JedisPool(poolConfig, "hadoop103", 6379, 10000);
+        jedisPool = new JedisPool(poolConfig, EduConfig.REDIS_HOST, 6379, 10000);
     }
 
     public static Jedis getJedis() {
