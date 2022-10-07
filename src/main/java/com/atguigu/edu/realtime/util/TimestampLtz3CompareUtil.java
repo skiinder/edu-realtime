@@ -11,8 +11,4 @@ public class TimestampLtz3CompareUtil {
         return cleanedTime1.compareTo(cleanedTime2);
     }
 
-    public static void main(String[] args) {
-        System.out.println(compare("2022-04-01 11:10:55.04Z",
-                "2022-04-01 11:10:55.039Z"));
-    }
 }
