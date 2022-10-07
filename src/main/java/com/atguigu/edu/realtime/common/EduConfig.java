@@ -14,6 +14,8 @@ public class EduConfig {
     public static final String HBASE_SCHEMA = "EDU_REALTIME";
 
     public static final String MYSQL_HOST = "mysql.bigdata";
+    public static final String MYSQL_USERNAME = "root";
+    public static final String MYSQL_PASSWORD = "0WWbJU72qA";
     public static final String REDIS_HOST = "redis-master.bigdata";
 
     // Phoenix驱动

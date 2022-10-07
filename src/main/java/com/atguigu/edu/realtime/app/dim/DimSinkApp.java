@@ -73,8 +73,8 @@ public class DimSinkApp {
                 .port(3306)
                 .databaseList("edu_config") // set captured database
                 .tableList("edu_config.table_process") // set captured table
-                .username("root")
-                .password("000000")
+                .username(EduConfig.MYSQL_USERNAME)
+                .password(EduConfig.MYSQL_PASSWORD)
                 .deserializer(new JsonDebeziumDeserializationSchema()) // converts SourceRecord to JSON String
                 .startupOptions(StartupOptions.initial())
                 .build();
