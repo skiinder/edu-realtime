@@ -1,4 +1,7 @@
 FROM flink:1.13.6
+RUN curl -L https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz | tar zxC /opt
+ENV HADOOP_HOME /opt/hadoop-3.3.4
+ENV HADOOP_CLASSPATH $(/opt/hadoop-3.3.4/bin/hadoop classpath)
 USER flink
 RUN mkdir -p $FLINK_HOME/app && \
     mkdir -p $FLINK_HOME/plugins/juicefs && \
