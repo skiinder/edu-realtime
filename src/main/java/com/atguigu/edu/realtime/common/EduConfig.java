@@ -13,6 +13,8 @@ public class EduConfig {
     // Phoenix库名
     public static final String HBASE_SCHEMA = "EDU_REALTIME";
 
+    public static final String KAFKA_BOOTSTRAP_SERVER = "kafka.bigdata:9092";
+
     public static final String MYSQL_HOST = "mysql.bigdata";
     public static final String MYSQL_USERNAME = "root";
     public static final String MYSQL_PASSWORD = "0WWbJU72qA";

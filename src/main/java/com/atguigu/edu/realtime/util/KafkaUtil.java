@@ -1,5 +1,6 @@
 package com.atguigu.edu.realtime.util;
 
+import com.atguigu.edu.realtime.common.EduConfig;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
@@ -19,17 +20,17 @@ import java.util.Properties;
  * Created by 铁盾 on 2022/6/13
  */
 public class KafkaUtil {
-    static final String BOOTSTRAP_SERVERS = "kafka.bigdata";
+    static final String BOOTSTRAP_SERVERS = EduConfig.KAFKA_BOOTSTRAP_SERVER;
     static final String DEFAULT_TOPIC = "default_topic";
 
     static Properties consumerProps = new Properties();
     static Properties producerProps = new Properties();
 
     static {
-        consumerProps.setProperty("bootstrap.servers", BOOTSTRAP_SERVERS);
+        consumerProps.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
         consumerProps.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         producerProps.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
-        producerProps.setProperty(ProducerConfig.TRANSACTION_TIMEOUT_CONFIG, 15 * 60 * 1000L + "");
+        producerProps.setProperty(ProducerConfig.TRANSACTION_TIMEOUT_CONFIG, Long.toString(15 * 60 * 1000L));
     }
 
     public static FlinkKafkaConsumer<String> getKafkaConsumer(String topic, String groupId) {
@@ -51,7 +52,7 @@ public class KafkaUtil {
 
             @Override
             public String deserialize(ConsumerRecord<byte[], byte[]> consumerRecord) throws Exception {
-                if(consumerRecord != null && consumerRecord.value() != null) {
+                if (consumerRecord != null && consumerRecord.value() != null) {
                     return new String(consumerRecord.value());
                 }
                 return null;
@@ -69,7 +70,7 @@ public class KafkaUtil {
         return new FlinkKafkaProducer<String>(DEFAULT_TOPIC, new KafkaSerializationSchema<String>() {
             @Override
             public ProducerRecord<byte[], byte[]> serialize(String jsonStr, @Nullable Long aLong) {
-                if(jsonStr != null) {
+                if (jsonStr != null) {
                     return new ProducerRecord<byte[], byte[]>(topic, jsonStr.getBytes());
                 }
                 return null;

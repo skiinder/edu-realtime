@@ -9,19 +9,15 @@ import java.util.concurrent.TimeUnit;
  * Created by 铁盾 on 2022/6/18
  */
 public class ThreadPoolUtil {
-    private static ThreadPoolExecutor threadPoolExecutor;
+
+    private static final class ThreadPoolExecutorHolder {
+        static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+                4, 20, 5 * 60, TimeUnit.SECONDS,
+                new LinkedBlockingDeque<>()
+        );
+    }
 
     public static ThreadPoolExecutor getInstance() {
-        if(threadPoolExecutor == null) {
-            synchronized (ThreadPoolUtil.class) {
-                if(threadPoolExecutor == null) {
-                    threadPoolExecutor = new ThreadPoolExecutor(
-                            4, 20, 5 * 60, TimeUnit.SECONDS,
-                            new LinkedBlockingDeque<>()
-                    );
-                }
-            }
-        }
-        return threadPoolExecutor;
+        return ThreadPoolExecutorHolder.threadPoolExecutor;
     }
 }

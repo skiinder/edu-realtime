@@ -31,7 +31,6 @@ public class JedisUtil {
                 }
             }
         }
-        Jedis jedis = jedisPool.getResource();
-        return jedis;
+        return jedisPool.getResource();
     }
 }
